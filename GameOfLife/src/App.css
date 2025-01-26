@@ -1,8 +1,14 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  line-height: 1;
+}
+
+.header {
+  background-color: #727987;
+  border: solid 2px black;
+  border-radius: 14px;
 }
 
 .logo {

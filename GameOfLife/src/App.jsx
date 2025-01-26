@@ -1,24 +1,18 @@
 import { useState } from 'react'
 import './App.css'
-import GOL from './GOL';
+import GameOfLife from './GameOfLife';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <header className='App-Header'>
-        <h1>Conway's Game of Life</h1> 
-        <GOL />     
-      </header>
-      
+      <div className='header'>
+        <h1>Conway's Game of Life</h1>
+      </div>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <GameOfLife />
       </div>
     </>
   )
-}
+}                           
 
 export default App
