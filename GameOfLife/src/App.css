@@ -8,11 +8,17 @@
   background-color: #727987;
   border: solid 2px black;
   border-radius: 14px;
-  padding: 15px;
+  padding: 5px;
 }
 
 .board { 
   line-height: 1;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(30, 20px);
+  gap: 1px;
 }
 
 .controls {

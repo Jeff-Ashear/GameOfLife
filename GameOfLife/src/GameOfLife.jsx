@@ -4,9 +4,9 @@ import   { useState } from 'react';
 
 function GridGen() {
  
-    const [grid, setGrid] = useState([1,0,1,1,0,0]);
-    let colorNum = 0
-    let colorGrid = 0
+    const [grid, setGrid] = useState([20].fill(0));
+    const [isAlive, setIsAlive] = useState(false);
+
 
     
     let squares = []
@@ -16,37 +16,40 @@ function GridGen() {
         backgroundColor: "white",
         width: "30px",
         height: "30px",
-        display: "inline-block",
+        // display: "grid",
         border: "1px solid black",
         marginTop: "-10px",
         marginBottom: "-10px"
     }
+
+    function handleClick( key ) {
     
-    for (let j = 0; j < grid.length; j++) {
-
-
-
-        
-        style.backgroundColor = (grid[j] == 0 ? "white" :  "orange")
-
-        squares.push(
-            <span style={ {...style} }></span>
-        )
+        console.log("click", key)
+        // console.log(key)
+        style.backgroundColor = "orange"
     }
     
+    for (let i = 0; i < 20; i++) {
+        for (let j = 0; j < grid.length; j++) {
+            
+            style.backgroundColor = (grid[j] == 0 ? "white" :  "orange")
 
-    for (let i = 0; i < grid.length; i++) {
+            squares.push(
+                // <span style={ {...style} }></span>
+                <div key={`${i}${j}`} style={ {...style} } onClick={() => handleClick( key )}></div>
+            )
+        }
+    
         rows.push(<div>{squares}</div>)
     }
 
-
     return (
         <>
-            <div className='board'>
+            <div className='board, grid'>
                 {rows}
             </div>
             <div className='controls'>
-                <button onClick={}>Randomize</button>
+                {/* <button onClick={}>Randomize</button> */}
             </div>
         </>
     )

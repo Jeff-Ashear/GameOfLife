@@ -1,57 +1,69 @@
-import React, {
-    useState,
-    useCallback,
-    useRef
-} from 'react';
+import './App.css'
 
-const numRows = 22;
-const numCols = 40;
-const operations = [
-    [0, 1],
-    [0, -1],
-    [1, -1],
-    [-1, 1],
-    [1, 1],
-    [-1, -1],
-    [1, 0],
-    [-1, 0],
-];
+import   { useState } from 'react';
 
+function GridGen() {
+ 
+    const [grid, setGrid] = useState([0,0,0,0,0,0]);
+    let colorNum = 0
+    let colorGrid = 0
 
-function Grid() {
-    const [grid, setGrid] = useState([1])
-
-    let squares  = []
+    
+    let squares = []
+    let rows = []
 
     const style = {
         backgroundColor: "white",
-        hieght: "30px",
-        width: "30px",  
-        display: "inline",
-        border: "3px solid black"
+        width: "10px",
+        height: "55px",
+        display: "inline-block",
+        border: "1px solid black",
+        borderRadius: "0px",
+        marginTop: "-10px",
+        marginBottom: "-10px"
     }
-    
-    for (let i = 0; i < grid.length; i++) {
-        // style.backgroundColor = (grid[i] == 0 ? "white" : "orange")
 
-        squares.push(
-            <div style={ {...style} }></div>
-        )
+    function handleClick() {
+        if (grid)
+        console.log("click")
+    // click a button to change it's color.
+        style.backgroundColor = "orange"
     }
     
-    return (    
-            <div>
-                {squares}
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < grid.length; j++) {
+            // let num = Math.round(Math.random())
+            
+            style.backgroundColor = (grid[j] == 0 ? "white" :  "orange")
+
+            squares.push(
+                // <span style={ {...style} }></span>
+                <button style={ {...style} } onClick={() => handleClick()}></button>
+            )
+        }
+    
+        rows.push(<div>{squares}</div>)
+    }
+
+    return (
+        <>
+            <div className='board'>
+                {rows}
             </div>
-
+            <div className='controls'>
+                {/* <button onClick={}>Randomize</button> */}
+            </div>
+        </>
     )
 }
+
 
 function GameOfLife() {
     return (
         <main>
-            <Grid />
+            <GridGen />       
         </main>
     )
 }
-export default GameOfLife;
+
+export default GameOfLife;  
