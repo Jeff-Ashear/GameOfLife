@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import './App.css';
 
+function GridGen({cellState}) {
+    
+
+    let style = {
+        style.backgroundColor: {cellState},     
+    }
+
+    console.log(cellState)
+
+    return (
+        <div className='grid' style.backgroundColor={cellState}>X</div>
+    )
+}
+
 
 function GameOfLife() {
     const [grid, setGrid] = useState([
@@ -15,12 +29,21 @@ function GameOfLife() {
         [0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0]
     ])
+    const [isAlive, setIsAlive] = useState(true)
 
-
+    let cellState = 'white'
+    if (isAlive) {
+        cellState = 'orange'
+    } else {
+        cellState = 'white'
+    }
+    console.log(cellState)
+    
+    
     // console.log(grid)
     return (
         <>
-            <h1>Hello</h1>
+            <GridGen cellState={cellState} />
         </>
     )
 }
@@ -28,14 +51,5 @@ function GameOfLife() {
 export default GameOfLife
 
 
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0],
-// [0,0,0,0,0,0,0,0,0,0]
+
 
